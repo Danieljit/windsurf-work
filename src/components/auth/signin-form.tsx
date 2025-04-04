@@ -8,10 +8,9 @@ import { Input } from "@/components/ui/input"
 
 interface SignInFormProps {
   onSubmit: (data: { email: string; password: string }) => void
-  error?: string
 }
 
-export function SignInForm({ onSubmit, error }: SignInFormProps) {
+export function SignInForm({ onSubmit }: SignInFormProps) {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -51,30 +50,29 @@ export function SignInForm({ onSubmit, error }: SignInFormProps) {
           <div className="grid gap-2">
             <Input
               id="email"
-              name="email"
               placeholder="name@example.com"
               type="email"
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
               disabled={isLoading}
-              required
-            />
-            <Input
-              id="password"
-              name="password"
-              placeholder="Password"
-              type="password"
-              autoComplete="current-password"
-              disabled={isLoading}
-              required
             />
           </div>
-          {error && (
-            <p className="text-sm text-red-500">{error}</p>
-          )}
+          <div className="grid gap-2">
+            <Input
+              id="password"
+              placeholder="Password"
+              type="password"
+              autoCapitalize="none"
+              autoComplete="current-password"
+              disabled={isLoading}
+            />
+          </div>
           <Button disabled={isLoading}>
-            {isLoading ? "Signing in..." : "Sign In"}
+            {isLoading && (
+              <span className="mr-2 h-4 w-4 animate-spin">⟳</span>
+            )}
+            Sign In
           </Button>
         </div>
       </form>

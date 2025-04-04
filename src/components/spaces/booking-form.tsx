@@ -2,9 +2,10 @@
 
 import * as React from "react"
 import { format, startOfToday } from "date-fns"
+
+import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 
@@ -14,7 +15,7 @@ interface BookingFormProps {
 
 export function BookingForm({ price }: BookingFormProps) {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
-  const [timeSlot, setTimeSlot] = React.useState("morning")
+  // const [timeSlot, setTimeSlot] = React.useState("morning")
 
   return (
     <Card className="p-6">
@@ -40,7 +41,7 @@ export function BookingForm({ price }: BookingFormProps) {
           <h3 className="text-lg font-semibold mb-2">Select Time</h3>
           <RadioGroup
             defaultValue="morning"
-            onValueChange={setTimeSlot}
+            // onValueChange={setTimeSlot}
             className="grid grid-cols-2 gap-4"
           >
             <div>
